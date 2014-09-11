@@ -1,5 +1,7 @@
 package ru.yandex.qatools.camelot.yandexer;
 
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,20 +12,27 @@ import java.util.List;
  */
 public class State implements Serializable {
 
-    private List<String> texts;
+    private String key;
+    @JsonSerialize
+    private List<String> texts = new ArrayList<String>();
 
     public State() {
     }
 
-    public State(List<String> texts) {
+    public State(String key, List<String> texts) {
+        this.key = key;
         this.texts = texts;
     }
 
-    public List<String> getTexts() {
-        return texts == null ? new ArrayList<String>() : texts;
+    public String getKey() {
+        return key;
     }
 
-    public void setTexts(List<String> texts) {
-        this.texts = texts;
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public void addText(String text) {
+        this.texts.add(text);
     }
 }

@@ -14,12 +14,12 @@ import ru.yandex.qatools.camelot.api.annotations.Processor;
 public class Fetcher {
 
     @Processor
-    public EventWithText search(Event event) {
+    public EventResultsCount search(Event event) {
         WebDriver driver = new PhantomJSDriver();
         driver.get("http://yandex.ru/yandsearch?text=" + event.getKey());
-        String text = driver.findElement(By.className("serp-item__title-link")).getText();
+        String text = driver.findElement(By.className("input__found_visibility_visible")).getText();
         driver.quit();
 
-        return new EventWithText(event.getKey(), text);
+        return new EventResultsCount(event.getKey(), text);
     }
 }
