@@ -1,5 +1,10 @@
-h1 Collector
 .collector.widget(ng-controller="AppCtrl")
+    .form
+        form.form-horizontal(ng-submit="doSearch()")
+            .form-group
+                label.control-label.col-md-3(style="text-align:left") Enter query
+                .col-md-6
+                    input.form-control(ng-model="searchKey", placeholder="Yandex search query")
     .results
         ul(ng-repeat="(key, result) in results")
             li

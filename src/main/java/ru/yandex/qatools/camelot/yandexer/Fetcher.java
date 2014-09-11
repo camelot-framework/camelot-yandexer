@@ -6,6 +6,10 @@ import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import ru.yandex.qatools.camelot.api.annotations.Filter;
 import ru.yandex.qatools.camelot.api.annotations.Processor;
 
+import java.io.UnsupportedEncodingException;
+
+import static java.net.URLEncoder.encode;
+
 /**
  * @author Dmitry Baev charlie@yandex-team.ru
  *         Date: 11.09.14
@@ -14,10 +18,10 @@ import ru.yandex.qatools.camelot.api.annotations.Processor;
 public class Fetcher {
 
     @Processor
-    public EventResultsCount search(Event event) {
+    public EventResultsCount search(Event event) throws UnsupportedEncodingException {
         WebDriver driver = new PhantomJSDriver();
-        driver.get("http://yandex.ru/yandsearch?text=" + event.getKey());
-        String text = driver.findElement(By.className("input__found_visibility_visible")).getText();
+        driver.get("http://yandex.ru/yandsearch?text=" + encode(event.getKey(), "UTF-8"));
+        String text = driver.findElement(By.className("input__found")).getText();
         driver.quit();
 
         return new EventResultsCount(event.getKey(), text);
