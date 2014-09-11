@@ -1,5 +1,6 @@
 h1 Collector
 .collector.widget(ng-controller="AppCtrl")
     .results
-        p(ng-repeat="(key, result) in results")
-            | {{result}}
+        ul(ng-repeat="(key, result) in results")
+            li
+                | {{key}} : {{result.texts[0]}}
