@@ -14,7 +14,7 @@ import static java.net.URLEncoder.encode;
  * @author Dmitry Baev charlie@yandex-team.ru
  *         Date: 11.09.14
  */
-@Filter(instanceOf = {Event.class})
+@Filter(instanceOf = Event.class)
 public class Fetcher {
 
     @Processor

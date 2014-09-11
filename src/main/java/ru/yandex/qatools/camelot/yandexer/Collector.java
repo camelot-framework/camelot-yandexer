@@ -13,12 +13,10 @@ import ru.yandex.qatools.fsm.annotations.Transitions;
  * @author Dmitry Baev charlie@yandex-team.ru
  *         Date: 11.09.14
  */
+@Aggregate
 @Filter(instanceOf = {EventResultsCount.class})
 @FSM(start = State.class)
-@Transitions(
-        @Transit(on = EventResultsCount.class)
-)
-@Aggregate
+@Transitions(@Transit(on = EventResultsCount.class))
 public class Collector {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
