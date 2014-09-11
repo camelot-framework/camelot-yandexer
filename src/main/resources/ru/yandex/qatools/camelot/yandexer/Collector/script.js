@@ -8,7 +8,6 @@ angular.module('ru.yandex.qatools.camelot.yandexer.Collector', ['camelotUtil'])
                     key: $scope.searchKey
                 }
             }).success(function (launch) {
-                    console.log("OK for " + $scope.searchKey);
                     $scope.searchKey = '';
                 });
         };
